@@ -93,3 +93,4 @@ Repo: `greetings-spring-boot` — โปรเจกต์จริง เรี
 | เมื่อไหร่ | ทำอะไร | ผล |
 |---|---|---|
 | Day 0 setup | Temurin 21 + Maven + scaffold Hello API | scaffold เสร็จ — รันด้วย `./run.sh` จากเทอร์มินัลเครื่องคุณ |
+| MVP CRUD | Greetings CRUD + Postgres + Flyway + Swagger + tests ทุกชั้น | Controller/Service/Repository + docker-compose |
