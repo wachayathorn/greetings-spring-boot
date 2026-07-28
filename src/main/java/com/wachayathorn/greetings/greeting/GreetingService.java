@@ -4,6 +4,7 @@ import com.wachayathorn.greetings.greeting.dto.CreateGreetingRequest;
 import com.wachayathorn.greetings.greeting.dto.GreetingResponse;
 import com.wachayathorn.greetings.greeting.dto.UpdateGreetingRequest;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,15 +43,17 @@ public class GreetingService {
 
     @Transactional
     public void delete(Long id) {
-        if (!greetingRepository.existsById(id)) {
-            throw new GreetingNotFoundException(id);
+        Long greetingId = Objects.requireNonNull(id, "id must not be null");
+        if (!greetingRepository.existsById(greetingId)) {
+            throw new GreetingNotFoundException(greetingId);
         }
-        greetingRepository.deleteById(id);
+        greetingRepository.deleteById(greetingId);
     }
 
     private GreetingEntity getEntity(Long id) {
-        return greetingRepository.findById(id)
-                .orElseThrow(() -> new GreetingNotFoundException(id));
+        Long greetingId = Objects.requireNonNull(id, "id must not be null");
+        return greetingRepository.findById(greetingId)
+                .orElseThrow(() -> new GreetingNotFoundException(greetingId));
     }
 
     private GreetingResponse toResponse(GreetingEntity entity) {
