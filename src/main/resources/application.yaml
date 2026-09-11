@@ -1,3 +1,5 @@
 spring:
   application:
     name: greetings-spring-boot
+  jackson:
+    property-naming-strategy: SNAKE_CASE
