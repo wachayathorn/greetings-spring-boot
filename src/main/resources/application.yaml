@@ -3,3 +3,18 @@ spring:
     name: greetings-spring-boot
   jackson:
     property-naming-strategy: SNAKE_CASE
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/greetings-spring-boot
+    username: postgres
+    password: P@ssw0rd
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
