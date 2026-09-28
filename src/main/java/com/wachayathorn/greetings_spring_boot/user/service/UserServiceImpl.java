@@ -1,25 +1,25 @@
-package com.wachayathorn.greetings_spring_boot.user;
-
-import java.util.UUID;
+package com.wachayathorn.greetings_spring_boot.user.service;
 
 import org.springframework.stereotype.Service;
 
+import com.wachayathorn.greetings_spring_boot.user.UserEntity;
 import com.wachayathorn.greetings_spring_boot.user.dto.request.CreateUserReq;
 import com.wachayathorn.greetings_spring_boot.user.dto.response.CreateUserRes;
+import com.wachayathorn.greetings_spring_boot.user.repository.UserRepositoryImpl;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryImpl userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepositoryImpl userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public CreateUserRes createUser(CreateUserReq createUserReq) {
         var userEntity = new UserEntity(
-                UUID.randomUUID().toString(),
+                null,
                 createUserReq.name(),
                 createUserReq.email(),
                 createUserReq.password());

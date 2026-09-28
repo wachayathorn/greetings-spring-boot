@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wachayathorn.greetings_spring_boot.user.dto.request.CreateUserReq;
 import com.wachayathorn.greetings_spring_boot.user.dto.response.CreateUserRes;
+import com.wachayathorn.greetings_spring_boot.user.service.UserService;
 
 import jakarta.validation.Valid;
 

@@ -3,12 +3,12 @@ package com.wachayathorn.greetings_spring_boot.user.dto.response;
 import com.wachayathorn.greetings_spring_boot.user.UserEntity;
 
 public class CreateUserRes {
-    private String id;
+    private Long id;
     private String name;
     private String email;
     private String password;
 
-    public CreateUserRes(String id, String name, String email, String password) {
+    public CreateUserRes(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -17,41 +17,42 @@ public class CreateUserRes {
 
     public static CreateUserRes fromEntity(UserEntity entity) {
         return new CreateUserRes(
-                entity.getId(),
-                entity.getName(),
-                entity.getEmail(),
-                entity.getPassword());
+                entity.id(),
+                entity.name(),
+                entity.email(),
+                entity.password());
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
