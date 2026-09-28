@@ -1,5 +1,7 @@
 package com.wachayathorn.greetings_spring_boot.user;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping
-    public CreateUserRes createUser(@Valid @RequestBody CreateUserReq createUserReq) {
-        return userService.createUser(createUserReq);
+    public ResponseEntity<CreateUserRes> createUser(@Valid @RequestBody CreateUserReq createUserReq) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(createUserReq));
     }
 }
