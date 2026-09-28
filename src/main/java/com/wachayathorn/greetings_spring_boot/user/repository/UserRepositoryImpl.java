@@ -16,8 +16,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public UserEntity save(UserEntity userEntity) {
-        var sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        var id = jdbcTemplate.queryForObject(sql, Long.class, userEntity.name(), userEntity.email(),
+        var sql = """
+                INSERT INTO users (name, email, password)
+                VALUES (?, ?, ?)
+                RETURNING id
+                """;
+        var id = jdbcTemplate.queryForObject(
+                sql,
+                Long.class,
+                userEntity.name(),
+                userEntity.email(),
                 userEntity.password());
         return new UserEntity(id, userEntity.name(), userEntity.email(), userEntity.password());
     }
