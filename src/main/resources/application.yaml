@@ -17,3 +17,8 @@ spring:
       idle-timeout: 600000
       max-lifetime: 1800000
       keepalive-time: 300000
+  
+  liquibase:
+    enabled: true
+    change-log: classpath:resources/db/migration/changelog-master.yaml
+
