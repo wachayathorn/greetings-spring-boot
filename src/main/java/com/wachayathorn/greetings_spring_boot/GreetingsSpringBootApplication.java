@@ -2,6 +2,7 @@ package com.wachayathorn.greetings_spring_boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.info.Info;
         description = "API documentation for Greetings Spring Boot service"
     )
 )
+@EnableAsync
 public class GreetingsSpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GreetingsSpringBootApplication.class, args);

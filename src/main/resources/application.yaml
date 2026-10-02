@@ -1,8 +1,13 @@
 spring:
   application:
     name: greetings-spring-boot
+
   jackson:
     property-naming-strategy: SNAKE_CASE
+    
+  threads:
+    virtual:
+      enabled: true
 
   datasource:
     url: jdbc:postgresql://localhost:5432/greetings-spring-boot
