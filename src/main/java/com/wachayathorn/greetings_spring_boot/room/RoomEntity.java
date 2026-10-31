@@ -1,4 +1,4 @@
-package com.wachayathorn.greetings_spring_boot.entity;
+package com.wachayathorn.greetings_spring_boot.room;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
