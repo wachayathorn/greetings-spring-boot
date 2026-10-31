@@ -7,11 +7,16 @@ spring:
   h2:
     console:
       enabled: false
+  web:
+    error:
+      include-message: never
+      include-binding-errors: never
 
-server:
-  error:
-    include-message: never
-    include-binding-errors: never
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
 
 logging:
   level:
@@ -21,3 +26,8 @@ logging:
 app:
   error:
     include-details: false
+  time:
+    zone: Asia/Bangkok
+  auth:
+    jwt-secret: stg-jwt-secret-at-least-32-characters
+    session-duration: PT24H

@@ -13,11 +13,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
-server:
-  error:
-    include-message: always
-    include-binding-errors: always
+  web:
+    error:
+      include-message: always
+      include-binding-errors: always
 
 logging:
   level:
@@ -28,3 +27,8 @@ logging:
 app:
   error:
     include-details: true
+  time:
+    zone: Asia/Bangkok
+  auth:
+    jwt-secret: local-dev-jwt-secret-at-least-32-chars-long
+    session-duration: PT24H

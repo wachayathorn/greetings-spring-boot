@@ -20,11 +20,15 @@ spring:
       hibernate:
         jdbc:
           time_zone: Asia/Bangkok
-
-server:
-  error:
-    include-stacktrace: never
+  web:
+    error:
+      include-stacktrace: never
 
 app:
   error:
     include-details: false
+  time:
+    zone: Asia/Bangkok
+  auth:
+    jwt-secret: change-me-in-real-env-min-32-chars!!
+    session-duration: PT24H
