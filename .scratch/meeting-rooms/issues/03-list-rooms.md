@@ -4,9 +4,9 @@
 
 **Blocked by:** 02: Log in and log out
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] A logged-in user receives exactly Sirius, Canopus, Vega, Rigel, and Polaris
-- [ ] A request without a usable login is rejected
-- [ ] There is no way to add, rename, or remove a room
-- [ ] The behavior is visible from the HTTP status and body, not from the database
+- [x] A logged-in user receives exactly Sirius, Canopus, Vega, Rigel, and Polaris
+- [x] A request without a usable login is rejected
+- [x] There is no way to add, rename, or remove a room
+- [x] The behavior is visible from the HTTP status and body, not from the database
