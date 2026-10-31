@@ -6,16 +6,16 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.wachayathorn.greetings_spring_boot.booking.BookingAlreadyCancelledException;
-import com.wachayathorn.greetings_spring_boot.booking.BookingCancelForbiddenException;
-import com.wachayathorn.greetings_spring_boot.booking.BookingNotFoundException;
-import com.wachayathorn.greetings_spring_boot.booking.BookingOverlapException;
-import com.wachayathorn.greetings_spring_boot.booking.InvalidBookingTimeException;
-import com.wachayathorn.greetings_spring_boot.room.RoomNotFoundException;
-import com.wachayathorn.greetings_spring_boot.session.InvalidCredentialsException;
-import com.wachayathorn.greetings_spring_boot.session.InvalidSessionTokenException;
-import com.wachayathorn.greetings_spring_boot.session.SessionAlreadyLoggedOutException;
-import com.wachayathorn.greetings_spring_boot.user.DuplicateUsernameException;
+import com.wachayathorn.greetings_spring_boot.booking.exception.BookingAlreadyCancelledException;
+import com.wachayathorn.greetings_spring_boot.booking.exception.BookingCancelForbiddenException;
+import com.wachayathorn.greetings_spring_boot.booking.exception.BookingNotFoundException;
+import com.wachayathorn.greetings_spring_boot.booking.exception.BookingOverlapException;
+import com.wachayathorn.greetings_spring_boot.booking.exception.InvalidBookingTimeException;
+import com.wachayathorn.greetings_spring_boot.room.exception.RoomNotFoundException;
+import com.wachayathorn.greetings_spring_boot.session.exception.InvalidCredentialsException;
+import com.wachayathorn.greetings_spring_boot.session.exception.InvalidSessionTokenException;
+import com.wachayathorn.greetings_spring_boot.session.exception.SessionAlreadyLoggedOutException;
+import com.wachayathorn.greetings_spring_boot.user.exception.DuplicateUsernameException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

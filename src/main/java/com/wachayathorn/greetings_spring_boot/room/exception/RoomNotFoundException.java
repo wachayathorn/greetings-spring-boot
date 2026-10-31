@@ -1,4 +1,4 @@
-package com.wachayathorn.greetings_spring_boot.room;
+package com.wachayathorn.greetings_spring_boot.room.exception;
 
 public class RoomNotFoundException extends RuntimeException {
 
