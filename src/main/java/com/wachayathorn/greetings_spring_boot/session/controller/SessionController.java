@@ -13,6 +13,7 @@ import com.wachayathorn.greetings_spring_boot.session.dto.request.LoginRequest;
 import com.wachayathorn.greetings_spring_boot.session.dto.response.LoginResponse;
 import com.wachayathorn.greetings_spring_boot.session.service.SessionService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -26,6 +27,7 @@ public class SessionController {
     }
 
     @PostMapping
+    @Operation(security = {})
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         LoginResponse response = sessionService.login(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

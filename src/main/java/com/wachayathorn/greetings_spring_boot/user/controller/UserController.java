@@ -11,6 +11,7 @@ import com.wachayathorn.greetings_spring_boot.user.dto.request.RegisterUserReque
 import com.wachayathorn.greetings_spring_boot.user.dto.response.RegisterUserResponse;
 import com.wachayathorn.greetings_spring_boot.user.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,6 +25,7 @@ public class UserController {
     }
 
     @PostMapping
+    @Operation(security = {})
     public ResponseEntity<RegisterUserResponse> register(@Valid @RequestBody RegisterUserRequest request) {
         RegisterUserResponse response = userService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
