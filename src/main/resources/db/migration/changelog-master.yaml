@@ -1,3 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/migration/changes/001-create-users-table.sql

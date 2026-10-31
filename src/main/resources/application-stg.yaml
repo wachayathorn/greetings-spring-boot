@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:meeting-rooms-stg;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: false
+
+server:
+  error:
+    include-message: never
+    include-binding-errors: never
+
+logging:
+  level:
+    root: INFO
+    com.wachayathorn.greetings_spring_boot: INFO
+
+app:
+  error:
+    include-details: false
