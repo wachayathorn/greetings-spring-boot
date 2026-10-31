@@ -34,16 +34,18 @@ public class BearerSessionAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        if (!"OPTIONS".equalsIgnoreCase(request.getMethod())) {
-            String path = request.getRequestURI();
-            if ("POST".equalsIgnoreCase(request.getMethod()) && "/api/v1/users".equals(path)) {
-                return true;
-            }
-            if ("POST".equalsIgnoreCase(request.getMethod()) && "/api/v1/sessions".equals(path)) {
-                return true;
-            }
+        String path = request.getRequestURI();
+        if (isApiDocumentation(path)) {
+            return true;
         }
-        return false;
+        return "POST".equalsIgnoreCase(request.getMethod())
+                && ("/api/v1/users".equals(path) || "/api/v1/sessions".equals(path));
+    }
+
+    private static boolean isApiDocumentation(String path) {
+        return path.startsWith("/swagger-ui")
+                || path.equals("/swagger-ui.html")
+                || path.startsWith("/v3/api-docs");
     }
 
     @Override
