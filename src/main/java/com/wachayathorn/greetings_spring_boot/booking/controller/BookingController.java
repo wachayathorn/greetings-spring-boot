@@ -13,41 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
-import com.wachayathorn.greetings_spring_boot.session.security.AuthRequestContext;
-import com.wachayathorn.greetings_spring_boot.booking.service.BookingCommandService;
-import com.wachayathorn.greetings_spring_boot.booking.service.BookingQueryService;
-import com.wachayathorn.greetings_spring_boot.booking.dto.response.BookingResponse;
 import com.wachayathorn.greetings_spring_boot.booking.dto.request.CreateBookingRequest;
+import com.wachayathorn.greetings_spring_boot.booking.dto.response.BookingResponse;
+import com.wachayathorn.greetings_spring_boot.booking.service.BookingService;
+import com.wachayathorn.greetings_spring_boot.session.security.AuthRequestContext;
 
 @RestController
 @RequestMapping("/api/v1/bookings")
 public class BookingController {
 
-    private final BookingCommandService bookingCommandService;
-    private final BookingQueryService bookingQueryService;
+    private final BookingService bookingService;
 
-    public BookingController(
-            BookingCommandService bookingCommandService,
-            BookingQueryService bookingQueryService) {
-        this.bookingCommandService = bookingCommandService;
-        this.bookingQueryService = bookingQueryService;
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
     }
 
     @PostMapping
     public ResponseEntity<BookingResponse> create(@Valid @RequestBody CreateBookingRequest request) {
-        BookingResponse response = bookingCommandService.create(request, AuthRequestContext.requireUser());
+        BookingResponse response = bookingService.create(request, AuthRequestContext.requireUser());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
     public ResponseEntity<List<BookingResponse>> list() {
-        List<BookingResponse> bookings = bookingQueryService.listBookings(AuthRequestContext.requireUser());
+        List<BookingResponse> bookings = bookingService.listBookings(AuthRequestContext.requireUser());
         return ResponseEntity.status(HttpStatus.OK).body(bookings);
     }
 
     @PostMapping("/{bookingId}/cancellation")
     public ResponseEntity<BookingResponse> cancel(@PathVariable long bookingId) {
-        BookingResponse response = bookingCommandService.cancel(bookingId, AuthRequestContext.requireUser());
+        BookingResponse response = bookingService.cancel(bookingId, AuthRequestContext.requireUser());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

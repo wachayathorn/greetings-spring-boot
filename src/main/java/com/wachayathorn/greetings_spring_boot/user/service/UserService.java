@@ -4,24 +4,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wachayathorn.greetings_spring_boot.user.exception.DuplicateUsernameException;
 import com.wachayathorn.greetings_spring_boot.user.dto.request.RegisterUserRequest;
 import com.wachayathorn.greetings_spring_boot.user.dto.response.RegisterUserResponse;
 import com.wachayathorn.greetings_spring_boot.user.entity.UserEntity;
+import com.wachayathorn.greetings_spring_boot.user.exception.DuplicateUsernameException;
 import com.wachayathorn.greetings_spring_boot.user.repository.UserRepository;
 
 @Service
-public class UserRegistrationServiceImpl implements UserRegistrationService {
+public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserRegistrationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
     @Transactional
     public RegisterUserResponse register(RegisterUserRequest request) {
         String normalized = request.username().toLowerCase();

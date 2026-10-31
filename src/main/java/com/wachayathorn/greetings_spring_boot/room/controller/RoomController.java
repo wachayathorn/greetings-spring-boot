@@ -13,11 +13,11 @@ import com.wachayathorn.greetings_spring_boot.room.service.RoomService;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-public class RoomQueryController {
+public class RoomController {
 
     private final RoomService roomService;
 
-    public RoomQueryController(RoomService roomService) {
+    public RoomController(RoomService roomService) {
         this.roomService = roomService;
     }
 

@@ -18,17 +18,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.wachayathorn.greetings_spring_boot.session.exception.InvalidSessionTokenException;
-import com.wachayathorn.greetings_spring_boot.session.service.SessionAuthService;
+import com.wachayathorn.greetings_spring_boot.session.service.SessionService;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 10)
 public class BearerSessionAuthFilter extends OncePerRequestFilter {
 
-    private final SessionAuthService sessionAuthService;
+    private final SessionService sessionService;
     private final JsonMapper jsonMapper;
 
-    public BearerSessionAuthFilter(SessionAuthService sessionAuthService, JsonMapper jsonMapper) {
-        this.sessionAuthService = sessionAuthService;
+    public BearerSessionAuthFilter(SessionService sessionService, JsonMapper jsonMapper) {
+        this.sessionService = sessionService;
         this.jsonMapper = jsonMapper;
     }
 
@@ -50,7 +50,7 @@ public class BearerSessionAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
-            AuthenticatedUser user = sessionAuthService.authenticate(request.getHeader("Authorization"));
+            AuthenticatedUser user = sessionService.authenticate(request.getHeader("Authorization"));
             AuthRequestContext.set(user);
             filterChain.doFilter(request, response);
         } catch (InvalidSessionTokenException exception) {
